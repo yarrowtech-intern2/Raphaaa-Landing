@@ -30,15 +30,15 @@ export default function TopBar() {
           </a>
         </div>
 
-        {/* CENTER MARQUEE (DESKTOP ONLY) */}
+        {/* CENTER MARQUEE */}
         <div
           className="
-            absolute left-1/2 top-1/2 hidden md:block
+            absolute left-1/2 top-1/2 
             -translate-x-1/2 -translate-y-1/2
-            w-[58%] overflow-hidden pointer-events-none
+            w-[45%] sm:w-[50%] md:w-[58%] overflow-hidden pointer-events-none
           "
         >
-          <div className="animate-marquee text-gray-700 font-medium whitespace-nowrap">
+          <div className="animate-marquee text-gray-700 font-medium whitespace-nowrap text-[10px] sm:text-[12px] md:text-sm">
             If you find any wrong product, damaged product, or payment related
             issue then kindly send us an email with the screenshot &nbsp; &nbsp;
           </div>
