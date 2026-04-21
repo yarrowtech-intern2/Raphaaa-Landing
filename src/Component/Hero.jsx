@@ -73,7 +73,7 @@ export default function Hero() {
             <div
               className="
                 relative w-full shadow-md overflow-hidden
-                rounded-[28px] lg:rounded-l-none lg:rounded-r-[999px]
+                rounded-full lg:rounded-l-none lg:rounded-r-[999px]
                 h-[260px] sm:h-[420px] lg:h-[520px]
               "
             >
@@ -87,7 +87,7 @@ export default function Hero() {
               <div
                 className="
                   absolute inset-0 pointer-events-none
-                  rounded-[28px] lg:rounded-l-none lg:rounded-r-[999px]
+                  rounded-full lg:rounded-l-none lg:rounded-r-[999px]
                   border-[7px] sm:border-[10px] border-white
                 "
               />
