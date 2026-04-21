@@ -68,11 +68,11 @@ export default function Contact() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* LEFT IMAGE */}
-          <div className="relative h-[260px] sm:h-[340px] md:h-full">
+          <div className="relative md:h-full">
             <img
               src={contactImg}
               alt="Contact"
-              className="w-full h-full object-cover"
+              className="w-full h-auto md:h-full object-cover"
             />
 
             {/* SMALL BADGE */}
