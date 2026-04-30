@@ -29,7 +29,10 @@ export default function Hero() {
       <div className="w-full max-w-[1400px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
           {/* LEFT CARD */}
-          <div className="w-full bg-[#f8fbff] rounded-[28px] lg:rounded-r-none overflow-hidden shadow-md border border-white/70 px-5 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-12 flex flex-col justify-center min-h-[340px] sm:min-h-[420px] lg:min-h-[520px] cursor-pointer">
+          <div 
+            data-aos="fade-right"
+            className="w-full bg-[#f8fbff] rounded-[28px] lg:rounded-r-none overflow-hidden shadow-md border border-white/70 px-5 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-12 flex flex-col justify-center min-h-[340px] sm:min-h-[420px] lg:min-h-[520px] cursor-pointer"
+          >
             {/* TOP BADGE */}
             <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
               <span className="w-10 sm:w-12 h-[2px] bg-blue-600 rounded-full" />
@@ -69,7 +72,10 @@ export default function Hero() {
           </div>
 
           {/* RIGHT CARD */}
-          <div className="w-full mt-6 lg:mt-0">
+          <div 
+            data-aos="fade-left"
+            className="w-full mt-6 lg:mt-0"
+          >
             <div
               className="
                 relative w-full shadow-md overflow-hidden

@@ -48,7 +48,10 @@ export default function NewArrivals() {
     >
       <div className="max-w-[1400px] mx-auto px-0">
         {/* TITLE */}
-        <div className="text-center mb-10 sm:mb-12 px-4 sm:px-6">
+        <div 
+          data-aos="fade-up"
+          className="text-center mb-10 sm:mb-12 px-4 sm:px-6"
+        >
           <h2 className="text-[28px] sm:text-3xl md:text-4xl font-extrabold text-gray-900">
             Explore New Arrivals
           </h2>

@@ -1,17 +1,7 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
 import aboutImg from "../assets/about.jpg";
 
 export default function About() {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 90,
-      easing: "ease-out",
-    });
-  }, []);
 
   return (
     <section

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useState } from "react";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import contactImg from "../assets/contact.jpg";
 
@@ -15,14 +13,6 @@ export default function Contact() {
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 80,
-      easing: "ease-out",
-    });
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

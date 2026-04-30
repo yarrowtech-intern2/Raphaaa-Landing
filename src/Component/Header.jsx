@@ -70,6 +70,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ✅ Close mobile menu on scroll
+  useEffect(() => {
+    const handleScrollClose = () => {
+      if (open) setOpen(false);
+    };
+
+    if (open) {
+      window.addEventListener("scroll", handleScrollClose);
+    }
+    return () => window.removeEventListener("scroll", handleScrollClose);
+  }, [open]);
+
   return (
     <>
       {/* TOP BAR */}

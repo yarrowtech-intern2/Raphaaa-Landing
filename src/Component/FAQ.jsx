@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const faqData = [
   {
@@ -38,14 +36,6 @@ export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
   const contentRefs = useRef([]);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 850,
-      once: true,
-      offset: 100,
-      easing: "ease-out",
-    });
-  }, []);
 
   const toggleFAQ = (index) => {
     setActiveIndex((prev) => (prev === index ? null : index));
