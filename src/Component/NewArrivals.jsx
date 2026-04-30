@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 
 // ✅ Replace with your real product images
 import img1 from "../assets/img1.jpg";
@@ -17,26 +17,42 @@ export default function NewArrivals() {
     []
   );
 
-  const [paused, setPaused] = useState(false);
-  const holdTimer = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollRef = useRef(null);
 
-  // ✅ Duplicate for infinite scroll
-  const loopProducts = [...products, ...products];
+  // Auto-scroll logic for seamless loop
+  useEffect(() => {
+    let interval;
+    if (!isPaused) {
+      interval = setInterval(() => {
+        if (scrollRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+          
+          // Move 1px
+          scrollRef.current.scrollLeft += 1;
+
+          // Reset for seamless loop when halfway through the total content (which is 2 groups)
+          if (scrollLeft >= (scrollWidth - clientWidth) / 2) {
+            scrollRef.current.scrollLeft = 1; // 1 to avoid jitter
+          }
+        }
+      }, 15); // Speed adjustment (Lower = Faster)
+    }
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section
       id="new-arrival"
-      className="w-full bg-[#bfe7ff] py-14 sm:py-16 lg:py-20 px-3 sm:px-6 overflow-hidden"
+      className="w-full bg-[#bfe7ff] py-14 sm:py-16 lg:py-20 overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto px-0">
         {/* TITLE */}
-        <div className="text-center mb-10 sm:mb-12">
+        <div className="text-center mb-10 sm:mb-12 px-4 sm:px-6">
           <h2 className="text-[28px] sm:text-3xl md:text-4xl font-extrabold text-gray-900">
             Explore New Arrivals
           </h2>
-
           <div className="w-20 h-[3px] bg-blue-600 mx-auto mt-3 rounded-full" />
-
           <p className="text-gray-700 mt-4 text-[13px] sm:text-[15px] md:text-base max-w-3xl mx-auto leading-relaxed">
             Discover the latest styles straight off the runway, freshly added to
             keep your wardrobe on the cutting edge of fashion.
@@ -44,63 +60,50 @@ export default function NewArrivals() {
         </div>
 
         {/* SLIDER */}
-        <div
+        <div 
           className="relative w-full"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={() => {
-            holdTimer.current = setTimeout(() => setPaused(true), 20);
-          }}
-          onTouchEnd={() => {
-            clearTimeout(holdTimer.current);
-            setPaused(false);
-          }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
-          {/* LEFT FADE */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-10 sm:w-16 bg-gradient-to-r from-[#bfe7ff] to-transparent z-10" />
-
-          {/* RIGHT FADE */}
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-10 sm:w-16 bg-gradient-to-l from-[#bfe7ff] to-transparent z-10" />
-
           {/* VIEWPORT */}
-          <div className="overflow-hidden">
-            {/* TRACK */}
-            <div
-              className={`flex w-max gap-6 marquee-running ${
-                paused ? "marquee-paused" : ""
-              }`}
-            >
-              {loopProducts.map((item, index) => (
-                <div
-                  key={index}
-                  className="
-                    group w-[240px] sm:w-[270px] xl:w-[230px] flex-shrink-0
-                    bg-white rounded-2xl overflow-hidden shadow-md transition cursor-pointer
-                    hover:shadow-2xl
-                    hover:animate-blink
-                    active:animate-blink
-                  "
-                >
-                  {/* IMAGE */}
-                  <div className="h-[320px] sm:h-[340px] xl:h-[280px] w-full overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      draggable="false"
+          <div 
+            ref={scrollRef}
+            className="flex overflow-x-auto scrollbar-hide select-none touch-pan-x"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {/* TRACK (Double groups for seamless loop) */}
+            <div className="flex w-max">
+              {[1, 2].map((group) => (
+                <div key={group} className="flex gap-6 pr-6">
+                  {products.map((item, index) => (
+                    <div
+                      key={index}
                       className="
-                        w-full h-full object-cover transition-transform duration-500
-                        group-hover:scale-110
-                        group-active:scale-110
+                        w-[240px] sm:w-[270px] xl:w-[230px] flex-shrink-0
+                        bg-white rounded-2xl overflow-hidden shadow-sm transition-all duration-300 cursor-pointer
+                        hover:shadow-xl hover:-translate-y-1
                       "
-                    />
-                  </div>
+                    >
+                      {/* IMAGE */}
+                      <div className="h-[320px] sm:h-[340px] xl:h-[280px] w-full overflow-hidden">
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          draggable="false"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        />
+                      </div>
 
-                  {/* ONLY NAME */}
-                  <div className="p-4">
-                    <h3 className="text-[15px] font-semibold text-blue-700">
-                      {item.name}
-                    </h3>
-                  </div>
+                      {/* NAME */}
+                      <div className="p-4">
+                        <h3 className="text-[15px] font-semibold text-blue-700">
+                          {item.name}
+                        </h3>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -108,32 +111,14 @@ export default function NewArrivals() {
         </div>
       </div>
 
-      {/* ✅ CSS (Marquee + Blink) */}
       <style>
         {`
-          @keyframes marqueeMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
           }
-
-          .marquee-running {
-            animation: marqueeMove 18s linear infinite;
-            will-change: transform;
-          }
-
-          .marquee-paused {
-            animation-play-state: paused !important;
-          }
-
-          /* ✅ BLINK EFFECT */
-          @keyframes blink {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.02); opacity: 0.75; }
-            100% { transform: scale(1); opacity: 1; }
-          }
-
-          .animate-blink {
-            animation: blink 0.6s ease-in-out infinite;
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `}
       </style>

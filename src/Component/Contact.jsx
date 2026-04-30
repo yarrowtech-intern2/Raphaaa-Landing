@@ -64,7 +64,7 @@ export default function Contact() {
     >
       <div
         data-aos="fade-up"
-        className="max-w-6xl mx-auto bg-white rounded-[28px] shadow-xl overflow-hidden border border-sky-100"
+        className="max-w-6xl mx-auto bg-white rounded-[28px] shadow-xl overflow-hidden border border-sky-100 cursor-pointer"
       >
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* LEFT IMAGE */}

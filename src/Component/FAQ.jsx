@@ -81,7 +81,7 @@ export default function FAQ() {
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 70}
-              className="bg-white rounded-2xl border border-blue-200 overflow-hidden shadow-sm hover:shadow-md transition"
+              className="bg-white rounded-2xl border border-blue-200 overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer"
             >
               {/* Question */}
               <button

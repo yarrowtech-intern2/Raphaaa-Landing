@@ -38,9 +38,15 @@ export default function TopBar() {
             w-[45%] sm:w-[50%] md:w-[58%] overflow-hidden pointer-events-none
           "
         >
-          <div className="animate-marquee text-gray-700 font-medium whitespace-nowrap text-[10px] sm:text-[12px] md:text-sm">
-            If you find any wrong product, damaged product, or payment related
-            issue then kindly send us an email with the screenshot &nbsp; &nbsp;
+          <div className="flex animate-marquee-seamless whitespace-nowrap text-gray-700 font-medium text-[10px] sm:text-[12px] md:text-sm">
+            <span className="pr-10">
+              If you find any wrong product, damaged product, or payment related
+              issue then kindly send us an email with the screenshot
+            </span>
+            <span className="pr-10">
+              If you find any wrong product, damaged product, or payment related
+              issue then kindly send us an email with the screenshot
+            </span>
           </div>
         </div>
 
@@ -58,18 +64,18 @@ export default function TopBar() {
         </div>
       </div>
 
-      {/* MARQUEE CSS (PUT IN index.css or global css) */}
+      {/* MARQUEE CSS */}
       <style>
         {`
-          .animate-marquee {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 18s linear infinite;
+          .animate-marquee-seamless {
+            display: flex;
+            width: max-content;
+            animation: marqueeMove 20s linear infinite;
           }
 
-          @keyframes marquee {
+          @keyframes marqueeMove {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); }
           }
         `}
       </style>

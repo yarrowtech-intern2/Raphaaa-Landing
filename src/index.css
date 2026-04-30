@@ -12,3 +12,17 @@
 .animate-marquee {
   animation: marquee 20s linear infinite;
 }
+
+/* Global Hand Cursor for Interactive Elements */
+a, 
+button, 
+[role="button"], 
+input[type="submit"], 
+input[type="button"], 
+input[type="reset"],
+label, 
+select, 
+summary,
+.cursor-pointer {
+  cursor: pointer !important;
+}
