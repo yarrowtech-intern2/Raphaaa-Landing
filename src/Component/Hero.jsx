@@ -98,7 +98,7 @@ export default function Hero() {
               <div
                 className="
                   absolute inset-0 pointer-events-none
-                  rounded-full lg:rounded-l-none lg:rounded-r-[999px]
+                  rounded-[28px] lg:rounded-l-none lg:rounded-r-[999px]
                   border-[7px] sm:border-[10px] border-white
                 "
               />

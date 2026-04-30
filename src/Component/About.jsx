@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full py-14 sm:py-16 lg:py-20 px-3 sm:px-6 bg-gradient-to-b from-sky-100 via-white to-sky-100"
+      className="w-full py-14 sm:py-16 lg:py-20 px-3 sm:px-6 bg-gradient-to-b from-[#cfe2f2] via-white to-sky-100"
     >
       <div
         data-aos="fade-up"
