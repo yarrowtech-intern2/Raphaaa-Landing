@@ -22,7 +22,7 @@ export default function Header() {
     const section = document.getElementById(id);
     if (!section) return;
 
-    const headerOffset = 140; 
+    const headerOffset = 160; 
     const elementPosition = section.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -83,12 +83,12 @@ export default function Header() {
   }, [open]);
 
   return (
-    <>
+    <div className="w-full fixed top-0 z-50">
       {/* TOP BAR */}
       <TopBar />
 
-      {/* STICKY HEADER */}
-      <header className="w-full sticky top-0 z-50 bg-[#E7F5FF]/95 backdrop-blur-md shadow-sm border-b border-sky-200">
+      {/* HEADER */}
+      <header className="w-full bg-[#E7F5FF]/95 backdrop-blur-md shadow-sm border-b border-sky-200">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           {/* LOGO */}
           <div
@@ -162,6 +162,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-    </>
+    </div>
   );
 }

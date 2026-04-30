@@ -22,9 +22,11 @@ export default function App() {
       <ToastContainer />
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <main className="pt-[102px] sm:pt-[112px] bg-[#cfe2f2]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
 
       <Footer />
     </>
